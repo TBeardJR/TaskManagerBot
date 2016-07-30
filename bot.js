@@ -1,5 +1,10 @@
 var Botkit = require('botkit');
 
+mongoStorage = require('botkit-storage-mongo')({mongoUri: process.env.MONGODB_URI});
+controller = Botkit.slackbot({
+    storage: mongoStorage
+});
+
 var controller = Botkit.slackbot();
 
 var bot = controller.spawn({
@@ -9,15 +14,12 @@ var bot = controller.spawn({
 });
 
 bot.startRTM(function(err,bot,payload) {
-    bot.say("I have been activated!");
-
     if (err) {
-
         throw new Error('Could not connect to Slack');
-
     }
-
 });
+
+
 
 controller.hears('open the (.*) doors','direct_message,direct_mention',function(bot,message) {
     var doorType = message.match[1]; //match[1] is the (.*) group. match[0] is the entire group (open the (.*) doors).
@@ -29,7 +31,6 @@ controller.hears('open the (.*) doors','direct_message,direct_mention',function(
 
 
 controller.hears('help','direct_message,direct_mention',function(bot,message) {
-    console.log(controller);
     var reply_with_attachments = {
         'as_user': true ,
         'text': 'Got it! :ambulance:',
@@ -49,4 +50,9 @@ controller.hears('help','direct_message,direct_mention',function(bot,message) {
     bot.reply(message, "Hold on...");
 
     bot.reply(message, reply_with_attachments);
+
+    var beans = {id: 'cool', beans: ['pinto', 'garbanzo']};
+    controller.storage.teams.save(beans);
+    beans = controller.storage.teams.get('cool');
+    console.log(beans);
 });
