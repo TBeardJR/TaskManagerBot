@@ -1,0 +1,26 @@
+{
+  "name": "task_manager_bot",
+  "version": "1.0.0",
+  "description": "A slack bot that manages tasks and task owners",
+  "main": "bot.js",
+  "dependencies": {
+    "botkit": "^0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "4.4.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TBeardJR/TaskManagerBot.git"
+  },
+  "author": "Tarence Beard Jr.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TBeardJR/TaskManagerBot/issues"
+  },
+  "homepage": "https://github.com/TBeardJR/TaskManagerBot#readme"
+}
