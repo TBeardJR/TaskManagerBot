@@ -9,7 +9,7 @@ var controller = Botkit.slackbot();
 
 var bot = controller.spawn({
 
-    token: "xoxb-64447209091-pBwDlxGQGJSoGqDXSWSNL3ei"
+    token: process.env.SLACK_TOKEN
 
 });
 
@@ -42,7 +42,7 @@ controller.hears('help','direct_message,direct_mention',function(bot,message) {
                 'color': '#7CD197'
             }
         ],
-        'token' : "xoxb-64447209091-pBwDlxGQGJSoGqDXSWSNL3ei",
+        'token' : process.env.SLACK_TOKEN,
         'link_names' : 'tbeardjr'
 
     };
